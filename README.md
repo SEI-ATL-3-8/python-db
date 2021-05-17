@@ -33,12 +33,14 @@
 - to make a migration: `alembic revision -m create-dinos
   - open that migration file in migrations/versions
   - put into upgrade function:
+    ```
       op.create_table(
         'users',
         sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('email', sa.String, nullable=False, unique=True),
         sa.Column('password', sa.String, nullable=False)
       )
+    ```
   - optionally put into downgrade: `op.drop_table('users')`
   - `alembic upgrade head`; note also `alembic downgrade -1`
   - confirm table in psql
@@ -46,18 +48,23 @@
 - making a model
   - `pip3 install flask_sqlalchemy`
   - make `models.py`and add
+  ```
     from flask_sqlalchemy import SQLAlchemy
     db = SQLAlchemy()
+  ```
   - add our model class
+  ```
     class Dino(db.Model):
       id = db.Column(db.Integer, primary_key=True)
       name = db.Column(db.String, nullable=False, unique=True)
       type = db.Column(db.String)
+  ```
 
 - db_test
   - can only run inside a flask application!
   - make `application.py`
   - skeleton:
+  ```
     from flask import Flask
     app = Flask(__name__)
 
@@ -84,5 +91,6 @@
     if __name__ == '__main__':
       port = int(os.environ.get('PORT', 5000))
       app.run(host='0.0.0.0', port=port, debug=True)
+  ```
   - replace db_test route w/ different test commands: models.Dino.query.all(), models.Dino.query.where(), etc
 
