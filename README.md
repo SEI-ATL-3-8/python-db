@@ -2,7 +2,7 @@
 
 - confirm pip3 w/ `pip3 --version`
   - get it from `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py`, `python3 get-pip.py`
-- `python -m venv virtual-environment`, confirm in file structure
+- `python3 -m venv virtual-environment`, confirm in file structure
 - setting up a virtual virtual-environment
   - `which python3` should yield a system install like /usr/local/bin/python3
   - `source virtual-environment/bin/activate`
