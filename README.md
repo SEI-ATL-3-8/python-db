@@ -30,7 +30,7 @@
 - now `alembic upgrade head` yields database "python-db" does not exist. create it w/ createdb or through psql
 - now `alembic upgrade head` is rolling
 
-- to make a migration: `alembic revision -m create-dinos
+- to make a migration: `alembic revision -m create-dinos`
   - open that migration file in migrations/versions
   - put into upgrade function:
     ```
