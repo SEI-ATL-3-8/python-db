@@ -11,6 +11,8 @@ import models
 models.db.init_app(app)
 
 def db_test():
+    ###############PART1##################
+
     #POST
     # owner1 = models.Owner(name="William",age=29)
     # owner2 = models.Owner(name="Jane", age=43)
@@ -31,6 +33,7 @@ def db_test():
 
     # models.db.session.commit()
 
+    ###############PART2##################
 
     #GET
     #(1)Print all the data in the owners table.
@@ -75,10 +78,74 @@ def db_test():
 
 
     #(8)Change Jane's name to Janet.
-    jane = models.Owner.query.filter_by(name='Jane').first()
-    jane.name = 'Janet'
-    models.db.session.add(jane)
-    models.db.session.commit()
+    # jane = models.Owner.query.filter_by(name='Jane').first()
+    # jane.name = 'Janet'
+    # models.db.session.add(jane)
+    # models.db.session.commit()
+
+    ###############PART3##################
+   
+    # (1)Archstone - belongs to Yuki
+    # yuki = models.Owner.query.filter_by(name="Yuki").first()
+    # apartment = models.Apartment.query.filter_by(name="Archstone").first()
+    # yuki.apartments.append(apartment)
+    # models.db.session.add(apartment)
+    # models.db.session.commit()
+
+    # (2)Zenith Hills - belongs to Yuki
+    # yuki = models.Owner.query.filter_by(name="Yuki").first()
+    # apartment = models.Apartment.query.filter_by(name="Zenith Hills").first()
+    # yuki.apartments.append(apartment)
+    # models.db.session.add(apartment)
+    # models.db.session.commit()
+
+    # (3)Willowspring - belongs to Janet
+    # Janet = models.Owner.query.filter_by(name="Janet").first()
+    # willowSpring = models.Apartment.query.filter_by(name="Willowsprin").first()
+    # Janet.apartments.append(willowSpring)
+    # models.db.session.add(willowSpring)
+    # models.db.session.commit()
+
+
+    # (4)Print all the properties that are owned by Yuki.
+    # yuki = models.Owner.query.filter_by(name="Yuki").first()
+    # yukiProperties = models.Apartment.query.filter_by(owner_id=yuki.id).all()
+    # print(yukiProperties)
+
+
+    # (5)Print the count (length) of how many properties Yuki owns.
+    # yuki = models.Owner.query.filter_by(name="Yuki").first()
+    # yukiProperties = models.Apartment.query.filter_by(owner_id=yuki.id).all()
+    # count = len(yukiProperties)
+    # print(count)
+
+
+    # (6)Find Willowspring's owner and print their name.
+    # Willowspring = models.Apartment.query.filter_by(name="Willowsprin").first()
+    # findOwner = models.Owner.query.filter_by(id=Willowspring.owner_id).first()
+    # print(findOwner.name)
+
+
+    # (7)Change Willowspring so that is now owned by Yuki.
+    # Willowspring = models.Apartment.query.filter_by(name="Willowsprin").first()
+    # yuki = models.Owner.query.filter_by(name="Yuki").first()
+    # Willowspring.owner_id = yuki.id
+    # models.db.session.add(Willowspring)
+    # models.db.session.commit()
+    
+
+
+
+
+    # (8)Print the names of the people who own properties that have 20 units or more
+
+    properties = models.Apartment.query.filter(models.Apartment.units < 20).all()
+
+    for owner in properties:
+        ownerId= f"{owner.owner_id}"
+    findOwner = models.Owner.query.filter_by(id=ownerId).first()
+    print(findOwner.name)
+
 
 
 
