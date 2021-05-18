@@ -43,22 +43,43 @@ def db_test():
 
 
     #(3)Print just the names of all owners.
-    owner1 = models.Owner.query.filter_by(name="William").first()
-    owner2 = models.Owner.query.filter_by(name="Jane").first()
-    owner3 = models.Owner.query.filter_by(name="Yuki").first()
-    print(owner1)
-    print(owner2)
-    print(owner3)
+    # owner1 = models.Owner.query.filter_by(name="William").first()
+    # owner2 = models.Owner.query.filter_by(name="Jane").first()
+    # owner3 = models.Owner.query.filter_by(name="Yuki").first()
+    # print(owner1.name)
+    # print(owner2.name)
+    # print(owner3.name)
 
     #(4)Print the names and ages of all owners who are older than 30.
+    # owners = models.Owner.query.filter(models.Owner.age>30).order_by(models.Owner.name).all()
+
+    # for owner in owners:
+    #  print(f"<name={owner.name}, age={owner.age}>")
+
 
     #(5)Look up William, save him to a variable, and print it
+    # william = models.Owner.query.filter_by(name="William").first()
+    # print(william)
+
 
     #(6)Look up archstone, save it to a variable, and print it.
+    # archstone = models.Apartment.query.filter_by(name="Archstone").first()
+    # print(archstone)
+
 
     #(7)Change Jane's age to 30.
+    # jane = models.Owner.query.filter_by(name="Jane").first()
+    # jane.age = 30
+    # models.db.session.add(jane)
+    # models.db.session.commit()
+
 
     #(8)Change Jane's name to Janet.
+    jane = models.Owner.query.filter_by(name='Jane').first()
+    jane.name = 'Janet'
+    models.db.session.add(jane)
+    models.db.session.commit()
+
 
 
     return 'ok'
